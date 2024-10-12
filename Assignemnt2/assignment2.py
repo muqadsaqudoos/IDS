@@ -54,6 +54,20 @@ def two_tuples(list_2):
     return users_list,transactions_list
 
 #part3
+def set_1(setA,setB,setC):
+    new_set = setA & setB
+    new_set1 = setA.symmetric_difference(setC)
+
+    return new_set,new_set1
+
+def set_2(setA,new_user_id):
+    return setA.update(new_user_id)
+
+def set3(setB,remove_users_id):
+    return setB.difference_update(remove_users_id)
+
+
+
 
 
 
