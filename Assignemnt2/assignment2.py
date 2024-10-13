@@ -66,8 +66,21 @@ def set_2(setA,new_user_id):
 def set3(setB,remove_users_id):
     return setB.difference_update(remove_users_id)
 
+#part4
+def dict_1(dictionary):
+    new_dict = {}
+    for key in dictionary:
+        for key1 in dictionary[key]:
+            if key1>=4:
+                new_dict[key] = key1
 
+    return dict_1
 
+def top_users(dictionary):
+    sorted_dict = sorted(dictionary.items(), key=lambda x: list(x[1].values())[0], reverse=True)
+    return sorted_dict[0:5]
+
+    
 
 
 
