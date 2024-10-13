@@ -57,7 +57,7 @@ def two_tuples(list_2):
 def set_1(setA,setB,setC):
     new_set = setA & setB
     new_set1 = setA.symmetric_difference(setC)
-
+    
     return new_set,new_set1
 
 def set_2(setA,new_user_id):
@@ -69,16 +69,35 @@ def set3(setB,remove_users_id):
 #part4
 def dict_1(dictionary):
     new_dict = {}
-    for key in dictionary:
-        for key1 in dictionary[key]:
-            if key1>=4:
-                new_dict[key] = key1
+    for user_id,feedback in dictionary.items():
+            if feedback['rating']>=4:
+                new_dict[user_id] = feedback
 
     return dict_1
 
 def top_users(dictionary):
-    sorted_dict = sorted(dictionary.items(), key=lambda x: list(x[1].values())[0], reverse=True)
+    sorted_dict = sorted(dictionary.items(), key=lambda x: x[1]['rating'], reverse=True)
     return sorted_dict[0:5]
+
+def dict_2(*dictionary):
+    new_dict = {}
+    for feedback_data in dictionary:
+        for user_id, feedback in feedback_data.items():
+            if user_id not in new_dict:
+                new_dict[user_id] = feedback
+
+            else:
+                new_dict[user_id]['ratings'] = max(new_dict[user_id]['rating'],feedback['rating'])
+                new_dict[user_id]['comments'] += "" + feedback['comment']
+
+
+    new_dict_1 = {user_id:feedback['rating'] 
+                  for user_id, feedback in dictionary.items() 
+                  if feedback['rating']>3}
+    
+    return new_dict,new_dict_1
+
+    
 
     
 
